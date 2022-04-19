@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class BowyeryItemModelProperties {
+public class KnightCoreBowModelProperties {
 
     public static void makeBow(Item item) {
         ItemProperties.register(item, new ResourceLocation("pull"), (bowItem, level, playerEntity, integer) -> {
