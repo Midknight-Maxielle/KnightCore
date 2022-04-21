@@ -20,7 +20,7 @@ import net.minecraft.world.level.Level;
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
-public class KnightcoreBowItem extends BowItem {
+public class ModBowItem extends BowItem {
 
     // Fields
 
@@ -32,7 +32,7 @@ public class KnightcoreBowItem extends BowItem {
 
     // Constructor Methods
 
-    public KnightcoreBowItem(Properties properties, double dmgMod, boolean inf, boolean flame, int drawMod) {
+    public ModBowItem(Properties properties, double dmgMod, boolean inf, boolean flame, int drawMod) {
         super(properties);
         this.dmgMod = dmgMod;
         this.inf = inf;
