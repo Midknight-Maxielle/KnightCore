@@ -24,29 +24,29 @@ public class CoreBowItem extends BowItem {
 
     // Fields
 
-    double dmgMod;
-    boolean inf;
-    public int drawMod;
-    boolean creativeMode;
+    public int DMG_MOD;
+    public int DRAW_MOD;
+    public boolean INFINITE_FLAG;
+    public boolean CREATIVE_FLAG;
 
     // Constructor Methods
 
-    public CoreBowItem(Properties properties, double dmgMod, boolean inf, int drawMod) {
+    public CoreBowItem(Properties properties, int dmgMod, int drawMod, boolean inf) {
         super(properties);
-        this.dmgMod = dmgMod;
-        this.inf = inf;
-        this.drawMod = drawMod;
+        DMG_MOD = dmgMod;
+        DRAW_MOD = drawMod;
+        INFINITE_FLAG = inf;
     }
 
     // Methods //
 
     public boolean canDraw(ItemStack arrows, Player player) {
-        creativeMode = player.getAbilities().instabuild;
+        CREATIVE_FLAG = player.getAbilities().instabuild;
         return
-                creativeMode ||
+                CREATIVE_FLAG ||
                 EnchantmentHelper.getItemEnchantmentLevel(Enchantments.INFINITY_ARROWS, arrows) > 0 ||
                 !player.getProjectile(arrows).isEmpty() ||
-                inf;
+                INFINITE_FLAG;
     }
 
     // Override Methods
@@ -59,7 +59,7 @@ public class CoreBowItem extends BowItem {
         InteractionResultHolder<ItemStack> intResult = net.minecraftforge.event.ForgeEventFactory.onArrowNock(bow, world, player, hand, drawableFlag);
         if (intResult != null) return intResult;
 
-        if (!creativeMode && !drawableFlag) {
+        if (!CREATIVE_FLAG && !drawableFlag) {
             return InteractionResultHolder.fail(bow);
         } else {
             player.startUsingItem(hand);
@@ -71,7 +71,7 @@ public class CoreBowItem extends BowItem {
     public void releaseUsing(ItemStack bow, Level worldIn, LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof Player playerEntity) {
             boolean drawableFlag = canDraw(bow, playerEntity);
-            creativeMode = playerEntity.getAbilities().instabuild;
+            CREATIVE_FLAG = playerEntity.getAbilities().instabuild;
             ItemStack arrowStack = playerEntity.getProjectile(bow);
 
             int i = this.getUseDuration(bow) - timeLeft;
@@ -85,7 +85,7 @@ public class CoreBowItem extends BowItem {
 
                 float f = getPowerForTime(i);
                 if (!((double)f < 0.1D)) {
-                    boolean infiniteFlag = creativeMode || inf || (arrowStack.getItem() instanceof ArrowItem && ((ArrowItem)arrowStack.getItem()).isInfinite(arrowStack, bow, playerEntity));
+                    boolean infiniteFlag = CREATIVE_FLAG || INFINITE_FLAG || (arrowStack.getItem() instanceof ArrowItem && ((ArrowItem)arrowStack.getItem()).isInfinite(arrowStack, bow, playerEntity));
                     if (!worldIn.isClientSide()) {
                         ArrowItem arrowitem = (ArrowItem)(arrowStack.getItem() instanceof ArrowItem ? arrowStack.getItem() : Items.ARROW);
                         AbstractArrow abArrowEntity = arrowitem.createArrow(worldIn, arrowStack, playerEntity);
@@ -95,10 +95,8 @@ public class CoreBowItem extends BowItem {
                             abArrowEntity.setCritArrow(true);
                         }
 
-                        int j = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, bow);
-                        if (j > 0) {
-                            abArrowEntity.setBaseDamage(abArrowEntity.getBaseDamage() + (double)j * 0.5D + 0.5D);
-                        }
+                        int sumDamageModifier = (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.POWER_ARROWS, bow) + DMG_MOD);
+                        if (sumDamageModifier > 0) { abArrowEntity.setBaseDamage(abArrowEntity.getBaseDamage() + (double)sumDamageModifier * 0.5D + 0.5D); }
 
                         int k = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.PUNCH_ARROWS, bow);
                         if (k > 0) {
@@ -110,7 +108,7 @@ public class CoreBowItem extends BowItem {
                         }
 
                         bow.hurtAndBreak(1, playerEntity, (player) -> player.broadcastBreakEvent(playerEntity.getUsedItemHand()));
-                        if (infiniteFlag || creativeMode && (arrowStack.getItem() == Items.SPECTRAL_ARROW || arrowStack.getItem() == Items.TIPPED_ARROW)) {
+                        if (infiniteFlag || CREATIVE_FLAG && (arrowStack.getItem() == Items.SPECTRAL_ARROW || arrowStack.getItem() == Items.TIPPED_ARROW)) {
                             abArrowEntity.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                         }
 
@@ -118,7 +116,7 @@ public class CoreBowItem extends BowItem {
                     }
 
                     worldIn.playSound(null, playerEntity.getX(), playerEntity.getY(), playerEntity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (worldIn.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-                    if (!infiniteFlag && !creativeMode) {
+                    if (!infiniteFlag && !CREATIVE_FLAG) {
                         arrowStack.shrink(1);
                         if (arrowStack.isEmpty()) {
                             playerEntity.getInventory().removeItem(arrowStack);
