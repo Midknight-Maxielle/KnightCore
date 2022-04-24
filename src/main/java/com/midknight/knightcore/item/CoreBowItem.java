@@ -26,17 +26,15 @@ public class CoreBowItem extends BowItem {
 
     double dmgMod;
     boolean inf;
-    boolean flame;
     public int drawMod;
     boolean creativeMode;
 
     // Constructor Methods
 
-    public CoreBowItem(Properties properties, double dmgMod, boolean inf, boolean flame, int drawMod) {
+    public CoreBowItem(Properties properties, double dmgMod, boolean inf, int drawMod) {
         super(properties);
         this.dmgMod = dmgMod;
         this.inf = inf;
-        this.flame = flame;
         this.drawMod = drawMod;
     }
 
@@ -107,7 +105,7 @@ public class CoreBowItem extends BowItem {
                             abArrowEntity.setKnockback(k);
                         }
 
-                        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, bow) > 0 || flame) {
+                        if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, bow) > 0) {
                             abArrowEntity.setSecondsOnFire(100);
                         }
 
