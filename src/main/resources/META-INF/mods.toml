@@ -3,14 +3,12 @@ loaderVersion="[40,)"
 license="All rights reserved"
 [[mods]]
 modId="knightcore"
-version="1.0.0"
+version="1.18.2-1.1"
 displayName="Knightcore"
 # logoFile="examplemod.png" #optional
 credits="Thanks to Melissa, to Forge, to the open-source community, and to the trans community." #optional
-authors="Maxielle" #optional
-description='''
-Knightcore is a library core mod that provides methods and classes used commonly in mods designed by Midknight Studios.
-'''
+authors="MK" #optional
+description='''Knightcore is a library dependency for mods created by MK.'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.knightcore]] #optional
     modId="forge" #mandatory
