@@ -1,6 +1,6 @@
 modLoader="javafml"
 loaderVersion="[40,)"
-license="All rights reserved"
+license="GNU General Public License v3"
 [[mods]]
 modId="knightcore"
 version="1.18.2-1.1"
