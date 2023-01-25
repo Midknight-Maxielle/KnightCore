@@ -1,6 +1,6 @@
-package com.midknight.knightcore;
+package com.mk.knightcore;
 
-import com.midknight.knightcore.util.KnightcoreRegistry;
+import com.mk.knightcore.util.KnightcoreRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 

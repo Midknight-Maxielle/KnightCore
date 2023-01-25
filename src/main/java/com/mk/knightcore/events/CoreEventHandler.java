@@ -1,8 +1,8 @@
-package com.midknight.knightcore.events;
+package com.mk.knightcore.events;
 
-import com.midknight.knightcore.Knightcore;
+import com.mk.knightcore.Knightcore;
 
-import com.midknight.knightcore.item.CoreBowItem;
+import com.mk.knightcore.item.CoreBowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;

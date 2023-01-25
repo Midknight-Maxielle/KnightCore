@@ -1,4 +1,4 @@
-package com.midknight.knightcore.util;
+package com.mk.knightcore.util;
 
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;

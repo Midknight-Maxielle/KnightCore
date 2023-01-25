@@ -1,6 +1,6 @@
-package com.midknight.knightcore.util;
+package com.mk.knightcore.util;
 
-import com.midknight.knightcore.Knightcore;
+import com.mk.knightcore.Knightcore;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;

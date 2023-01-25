@@ -1,4 +1,4 @@
-package com.midknight.knightcore.util;
+package com.mk.knightcore.util;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;

@@ -1,4 +1,4 @@
-package com.midknight.knightcore.item;
+package com.mk.knightcore.item;
 
 
 import net.minecraft.sounds.SoundEvents;
