@@ -4,7 +4,7 @@ import com.midknight.knightcore.Knightcore;
 
 import com.midknight.knightcore.item.CoreBowItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.client.event.FOVModifierEvent;
+import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,13 +13,13 @@ import net.minecraftforge.fml.common.Mod;
 public class CoreEventHandler {
 
     @SubscribeEvent
-    public static void handleBowFOV(FOVModifierEvent event) {
-        if (event.getEntity().isUsingItem() && event.getEntity().getMainHandItem().getItem() instanceof CoreBowItem) {
+    public static void handleBowFOV(ComputeFovModifierEvent event) {
+        if (event.getPlayer().isUsingItem() && event.getPlayer().getMainHandItem().getItem() instanceof CoreBowItem) {
 
-            float fovModifier = event.getEntity().getTicksUsingItem() / 20.0F;
+            float fovModifier = event.getPlayer().getTicksUsingItem() / 20.0F;
             if (fovModifier > 1.0F) { fovModifier = 1.0F; }
             else { fovModifier *= fovModifier; }
-            event.setNewfov(event.getFov() * (1.0F - fovModifier * 0.20F));
+            event.setNewFovModifier(event.getFovModifier() * (1.0F - fovModifier * 0.20F));
         }
     }
 

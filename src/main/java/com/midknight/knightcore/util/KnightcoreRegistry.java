@@ -16,7 +16,7 @@ public class KnightcoreRegistry {
     // Deferred Registers
 
     public static DeferredRegister<EntityType<?>> ENTITY_TYPES =
-        DeferredRegister.create(ForgeRegistries.ENTITIES, Knightcore.MOD_ID);
+        DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Knightcore.MOD_ID);
 
     public static final DeferredRegister<Item> ITEM =
     DeferredRegister.create(ForgeRegistries.ITEMS, Knightcore.MOD_ID);
