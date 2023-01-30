@@ -11,7 +11,8 @@ public class Knightcore
 
     public Knightcore() {
 
-        KnightcoreRegistry.registerITEM();
+        KnightcoreRegistry.registerENTITY_TYPES();
+        KnightcoreRegistry.registerITEMS();
         MinecraftForge.EVENT_BUS.register(this);
     }
 }

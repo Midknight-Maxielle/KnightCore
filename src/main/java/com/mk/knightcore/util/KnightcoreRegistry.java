@@ -18,7 +18,7 @@ public class KnightcoreRegistry {
     public static DeferredRegister<EntityType<?>> ENTITY_TYPES =
         DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Knightcore.MOD_ID);
 
-    public static final DeferredRegister<Item> ITEM =
+    public static final DeferredRegister<Item> ITEMS =
     DeferredRegister.create(ForgeRegistries.ITEMS, Knightcore.MOD_ID);
 
     // - - - - - - - - - //
@@ -30,5 +30,6 @@ public class KnightcoreRegistry {
 
     // Register Methods
 
-    public static void registerITEM() {ITEM.register(eventBus);}
+    public static void registerENTITY_TYPES() {ENTITY_TYPES.register(eventBus);}
+    public static void registerITEMS() {ITEMS.register(eventBus);}
 }
