@@ -1,6 +1,6 @@
-package net.fabricmc.mk.mixin;
+package net.mk.knightcore.mixin;
 
-import net.fabricmc.mk.Knightcore;
+import net.mk.knightcore.Knightcore;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

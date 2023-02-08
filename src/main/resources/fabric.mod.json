@@ -19,11 +19,14 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.mk.Knightcore"
+      "net.mk.knightcore.Knightcore"
+    ],
+    "client": [
+      "net.mk.knightcore.KnightcoreClient"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "knightcore.mixins.json"
   ],
 
   "depends": {
